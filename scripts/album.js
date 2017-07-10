@@ -28,6 +28,21 @@ var albumPicasso = {
      ]
  };
 
+ var albumViegro = {
+     title: 'The Rebel',
+     artist: 'Adam Viegro',
+     label: 'EM',
+     year: '1929',
+     albumArtUrl: 'assets/images/album_covers/03.png',
+     songs: [
+         { title: 'Love in The First Degree', duration: '1:13' },
+         { title: 'Fire Light', duration: '3:01' },
+         { title: 'Friends are Forever', duration: '5:21'},
+         { title: 'Willow me now?', duration: '1:14' },
+         { title: 'Wrong, Just Wrong', duration: '2:15'}
+     ]
+ };
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -40,13 +55,14 @@ var albumPicasso = {
      return template;
  };
 
- var setCurrentAlbum = function(album) {
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+ var albumTitle = document.getElementsByClassName('album-view-title')[0];
+ var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+ var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+ var albumImage = document.getElementsByClassName('album-cover-art')[0];
+ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
+
+ var setCurrentAlbum = function(album) {
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -61,4 +77,15 @@ var albumPicasso = {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var albums = [albumPicasso, albumMarconi, albumViegro]
+    var i = 1
+    albumImage.addEventListener('click', callback(){
+      setCurrentAlbum(albums[i]);
+      if(i == albums.length){
+        i = 0;
+      } else {
+        i++
+      };
+    });
 };
