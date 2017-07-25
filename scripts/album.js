@@ -144,7 +144,6 @@ var previousSong = function() {
     $lastSongNumberCell.html(lastSongNumber);
 };
 
-var setSong = function(songNumber)
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
